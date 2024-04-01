@@ -1,0 +1,15 @@
+Shell, 100, 0.018, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Ciura, 100, 0.017, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Knuth, 100, 0.015, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Shell, 1000, 0.241, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Ciura, 1000, 0.231, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Knuth, 1000, 0.214, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Shell, 10000, 3.437, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Ciura, 10000, 3.272, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Knuth, 10000, 3.188, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Shell, 100000, 50.319, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Ciura, 100000, 42.546, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Knuth, 100000, 45.866, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Shell, 1000000, 766.516, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Ciura, 1000000, 569.129, 2.1 hz 6 cores AMD Ryzen 5 5500U
+Knuth, 1000000, 713.202, 2.1 hz 6 cores AMD Ryzen 5 5500U

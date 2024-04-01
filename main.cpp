@@ -34,6 +34,20 @@ void printArr(const std::vector<int> &arr, int h, std::string sequence)
     std::cout << std::endl;
 }
 
+void printArrInFile(const std::vector<int> &arr, int h, std::string sequence, std::ofstream& outputFile)
+{
+    outputFile << " ";
+    for (int i = 0; i < arr.size(); i++)
+    {
+        outputFile << arr[i] << " ";
+    }
+    if(h == 0)
+        outputFile << " SEQ=" << sequence;
+    else
+        outputFile << " INCR=" << h;
+    outputFile << std::endl;
+}
+
 void InsertionSort(std::vector<int> &arr, int gap, int n, int start)
 {
     for (int i = start; i < n; i += gap)
@@ -51,10 +65,10 @@ void InsertionSort(std::vector<int> &arr, int gap, int n, int start)
 }
 
 
-void ShellSortsWithPrints(std::vector<int> &arr, std::vector<int> gaps, std::string GapType)
+void ShellSortsWithPrints(std::vector<int> &arr, std::vector<int> gaps, std::string GapType, std::ofstream& outputFile)
 {
     int n = arr.size();
-    printArr(arr,0,GapType);
+    printArrInFile(arr,0,GapType, outputFile);
     for (auto gap : gaps)
     {
         for (int i = 0; i < gap; i++)
@@ -62,7 +76,7 @@ void ShellSortsWithPrints(std::vector<int> &arr, std::vector<int> gaps, std::str
             InsertionSort(arr, gap, n, i);
         }
         
-        printArr(arr,gap,GapType);
+        printArrInFile(arr,gap,GapType, outputFile);
     }
     // printArr(arr);
 }
@@ -138,6 +152,8 @@ int main()
     std::ifstream file("entrada1.txt");
     std::string line;
 
+    std::ofstream outputFile1("saida1.txt");
+
     // reading file entrada 1
     while (std::getline(file, line))
     {
@@ -158,19 +174,18 @@ int main()
         }
 
         // Shell gap sequence
-
         std::vector<int> shellTest(numbers);
-        ShellSortsWithPrints(shellTest, ShellGaps(shellTest.size()),"SHELL");
+        ShellSortsWithPrints(shellTest, ShellGaps(shellTest.size()),"SHELL", outputFile1);
         
         // Ciura gap sequence
 
         std::vector<int> CiuraTest(numbers);
-        ShellSortsWithPrints(CiuraTest, CiuraGaps(CiuraTest.size()), "CIURA");
+        ShellSortsWithPrints(CiuraTest, CiuraGaps(CiuraTest.size()), "CIURA", outputFile1);
         
         // Knuth gap sequence
 
         std::vector<int> KnuthTest(numbers);
-        ShellSortsWithPrints(KnuthTest, KnuthGaps(KnuthTest.size()), "KNUTH");
+        ShellSortsWithPrints(KnuthTest, KnuthGaps(KnuthTest.size()), "KNUTH", outputFile1);
 
 
         // Verify Sort
@@ -182,6 +197,9 @@ int main()
 
     std::ifstream file2("entrada2.txt");
     std::string line2;
+
+    
+    std::ofstream outputFile2("saida2.txt");
 
     // reading file entrada 2
     while (std::getline(file2, line2))
@@ -233,15 +251,15 @@ int main()
         
 
         // Print the execution times
-        std::cout << "Shell, "
+        outputFile2 << "Shell, "
                   << numbers.size() << ", "
                   << std::chrono::duration_cast<std::chrono::nanoseconds>(endShell - startShell).count() / 1000000.0
                   << ", 2.1 hz 6 cores AMD Ryzen 5 5500U" << std::endl;
-        std::cout << "Ciura, "
+        outputFile2 << "Ciura, "
                   << numbers.size() << ", "
                   << std::chrono::duration_cast<std::chrono::nanoseconds>(endCiura - startCiura).count() / 1000000.0
                   << ", 2.1 hz 6 cores AMD Ryzen 5 5500U" << std::endl;
-        std::cout << "Knuth, "
+        outputFile2 << "Knuth, "
                   << numbers.size() << ", "
                   << std::chrono::duration_cast<std::chrono::nanoseconds>(endKnuth - startKnuth).count() / 1000000.0
                   << ", 2.1 hz 6 cores AMD Ryzen 5 5500U" << std::endl;
